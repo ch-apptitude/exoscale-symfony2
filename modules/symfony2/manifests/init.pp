@@ -53,13 +53,12 @@ class symfony2 {
   # Install Symfony2 from composer
   composer::project { 'symfony2':
     project_name   => 'symfony/framework-standard-edition',  # REQUIRED
-    target_dir     => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
-    version        => '2.4.*', # Some valid version string
+    target_dir     => "${symfony2_dir}/symfony2/releases/2", # REQUIRED
+    version        => '2.4.4', # Some valid version string
     prefer_source  => true,
     stability      => 'dev', # Minimum stability setting
     keep_vcs       => false, # Keep the VCS information
-    dev            => false, # Install dev dependencies
-    user           => 'www-data', # Set the user to run as
+    dev            => true, # Install dev dependencies
     before         => File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"]
   }
 
