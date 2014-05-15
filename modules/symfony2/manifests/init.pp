@@ -63,6 +63,7 @@ class symfony2 {
     optimize             => false, # Optimize autoloader
     dev                  => false, # Install dev dependencies
     before               => File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"],
+    require              => File["${symfony2_dir}/symfony2/releases/1/composer.json"],
   }
 
   # Copy a working parameters.yml file for the symfony2 setup.
