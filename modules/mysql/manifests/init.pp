@@ -2,7 +2,7 @@
 
 class mysql {
 
-  $password = extlookup('wordpress-db-root-password')
+  $password = extlookup('symfony2-db-root-password')
 
   package { [
       'mysql-client',
