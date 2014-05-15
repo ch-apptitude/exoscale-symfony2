@@ -1,5 +1,5 @@
 [symfony2]
-prefix = <%= symfony2_dir %>
+prefix = <%= @symfony2_dir %>
 user = www-data
 group = www-data
 listen = localhost:9000
@@ -18,6 +18,6 @@ access.log = /var/log/fpm/symfony2.access.log
 slowlog = /var/log/fpm/symfony2.slow.log
 request_slowlog_timeout = 5s
 request_terminate_timeout = 30s
-chdir = <%= symfony2_dir %>
+chdir = <%= @symfony2_dir %>
 catch_workers_output = no
 security.limit_extensions = .php
