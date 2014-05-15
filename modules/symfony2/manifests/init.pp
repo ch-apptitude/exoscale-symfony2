@@ -1,66 +1,45 @@
-# Install latest Wordpress
+# Install latest symfony2
 
-class wordpress {
+class symfony2 {
 
-  $wordpress_dir = extlookup('wordpress-dir', '/opt')
-  $wordpress_db_name = extlookup('wordpress-db-name')
-  $wordpress_db_user = extlookup('wordpress-db-user')
-  $wordpress_db_password = extlookup('wordpress-db-password')
-  $wordpress_db_rootpwd = extlookup('wordpress-db-root-password')
-  $wordpress_url = extlookup('wordpress-url', 'http://wordpress.org/latest.tar.gz')
-  
+  $symfony2_dir         = extlookup('symfony2-dir', '/opt')
+  $symfony2_db_name     = extlookup('symfony2-db-name')
+  $symfony2_db_user     = extlookup('symfony2-db-user')
+  $symfony2_db_password = extlookup('symfony2-db-password')
+  $symfony2_db_rootpwd  = extlookup('symfony2-db-root-password')
+  $symfony2_db_name     = extlookup('symfony2-db-host')
+  $symfony2_db_host     = extlookup('symfony2-db-host')
+  $symfony2_locale      = extlookup('symfony2-locale')
+  $symfony2_secret      = extlookup('symfony2-secret')
 
   # Create a directory
-  file { "${wordpress_dir}":
+  file { "${symfony2_dir}":
     ensure => "directory",
   }
 
-  # Create the Wordpress database
-  exec { 'create-database':
-    unless  => "/usr/bin/mysql -u root -p${wordpress_db_rootpwd} ${wordpress_db_name}",
-    command => "/usr/bin/mysql -u root -p${wordpress_db_rootpwd} --execute='create database ${$wordpress_db_name}'",
+  # Create Capifony directory structure
+  file { "${symfony2_dir}/symfony2":
+    ensure => "directory",
+  }
+  file { "${symfony2_dir}/symfony2/shared/app/config":
+    ensure => "directory",
   }
 
-  # Create the Wordpress database user
-  exec { 'create-user':
-    command => "/usr/bin/mysql -u root -p${wordpress_db_rootpwd} --execute=\"GRANT ALL PRIVILEGES ON ${$wordpress_db_name}.* TO \'${$wordpress_db_user}\'@\'localhost\' IDENTIFIED BY \'${$wordpress_db_password}\'\"",
-  }
-
-  # Get a new copy of the latest wordpress release
-  # FILE TO DOWNLOAD: http://wordpress.org/latest.tar.gz
-
-  exec { 'download-wordpress': #tee hee
-    command => '/usr/bin/wget -O "/tmp/install.tar.gz" http://wordpress.org/latest.tar.gz',
-    creates => "/tmp/install.tar.gz"
-
-  }
-
-  exec { 'untar-wordpress':
-    cwd     => $wordpress_dir,
-    command => '/bin/tar xzf /tmp/install.tar.gz',
-    require => Exec['download-wordpress'],
-    creates => "${wordpress_dir}/wordpress",
-    before => File["${wordpress_dir}/wordpress/wp-config.php"]
-  }
-
-  # Import a MySQL database for a basic wordpress site.
-  file { '/tmp/wordpress-db.sql':
-    ensure => file,
-    path => '/tmp/wordpress-db.sql',
-    content => template('wordpress/wordpress-db.sql.erb'),
-    before => File["${wordpress_dir}/wordpress/wp-config.php"]
-  }
-
-  exec { 'load-db':
-    command => "/usr/bin/mysql -u root -p${wordpress_db_rootpwd} ${wordpress_db_name} < /tmp/wordpress-db.sql && touch ${wordpress_dir}/wordpress/db-created",
-    creates => "${wordpress_dir}/wordpress/db-created"
-  }
-
-  # Copy a working wp-config.php file for the wordpress setup.
-  file { "${wordpress_dir}/wordpress/wp-config.php":
+  # Copy a working parameters.yml file for the symfony2 setup.
+  file { "${symfony2_dir}/symfony2/shared/app/config/parameters.yml":
     ensure => file,
     owner   => www-data,
-    content => template('wordpress/wp-config.php.erb'),
+    content => template('symfony2/parameters.yml.erb'),
   }
 
+  # Create the symfony2 database
+  exec { 'create-database':
+    unless  => "/usr/bin/mysql -u root -p${symfony2_db_rootpwd} ${symfony2_db_name}",
+    command => "/usr/bin/mysql -u root -p${symfony2_db_rootpwd} --execute='create database ${$symfony2_db_name}'",
+  }
+
+  # Create the symfony2 database user
+  exec { 'create-user':
+    command => "/usr/bin/mysql -u root -p${symfony2_db_rootpwd} --execute=\"GRANT ALL PRIVILEGES ON ${$symfony2_db_name}.* TO \'${$symfony2_db_user}\'@\'localhost\' IDENTIFIED BY \'${$symfony2_db_password}\'\"",
+  }
 }
