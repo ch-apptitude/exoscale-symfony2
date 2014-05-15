@@ -62,6 +62,7 @@ class symfony2 {
     interaction          => false, # No interactive questions
     optimize             => false, # Optimize autoloader
     dev                  => false, # Install dev dependencies
+    before               = File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"],
   }
 
   # Copy a working parameters.yml file for the symfony2 setup.
@@ -76,10 +77,12 @@ class symfony2 {
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/releases/1",
   }
+
   file { "${symfony2_dir}/symfony2/current/app/config/parameters.yml":
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/shared/app/config/parameters.yml",
   }
+
   file { "${symfony2_dir}/symfony2/current/app/logs":
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/shared/app/logs",
