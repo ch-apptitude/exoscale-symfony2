@@ -43,16 +43,46 @@ class symfony2 {
     ensure => "directory",
   }
 
+  # Copy composer.json file for the symfony2 setup.
+  file { "${symfony2_dir}/symfony2/releases/1/composer.json":
+    ensure => file,
+    owner   => www-data,
+    content => template('symfony2/composer.json.erb'),
+  }
+
   # Install Symfony2 from composer
-
-  # Create symlinks
-
+  composer::exec { 'symfony2':
+    cmd                  => 'install',  # REQUIRED
+    cwd                  => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
+    prefer_source        => false,
+    prefer_dist          => false,
+    dry_run              => false, # Just simulate actions
+    custom_installers    => false, # No custom installers
+    scripts              => false, # No script execution
+    interaction          => false, # No interactive questions
+    optimize             => false, # Optimize autoloader
+    dev                  => false, # Install dev dependencies
+  }
 
   # Copy a working parameters.yml file for the symfony2 setup.
   file { "${symfony2_dir}/symfony2/shared/app/config/parameters.yml":
     ensure => file,
     owner   => www-data,
     content => template('symfony2/parameters.yml.erb'),
+  }
+
+  # Create symlinks
+  file { "${symfony2_dir}/symfony2/current":
+     ensure => 'link',
+     target => "${symfony2_dir}/symfony2/releases/1",
+  }
+  file { "${symfony2_dir}/symfony2/current/app/config/parameters.yml":
+     ensure => 'link',
+     target => "${symfony2_dir}/symfony2/shared/app/config/parameters.yml",
+  }
+  file { "${symfony2_dir}/symfony2/current/app/logs":
+     ensure => 'link',
+     target => "${symfony2_dir}/symfony2/shared/app/logs",
   }
 
   # Create the symfony2 database
