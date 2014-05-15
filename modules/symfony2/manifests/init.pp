@@ -52,7 +52,7 @@ class symfony2 {
 
   # Install Symfony2 from composer
   composer::project { 'symfony2':
-    project_name   => 'symfony/symfony-standard',  # REQUIRED
+    project_name   => 'symfony/framework-standard-edition',  # REQUIRED
     target_dir     => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
     version        => '2.4.*', # Some valid version string
     prefer_source  => true,
