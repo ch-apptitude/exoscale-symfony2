@@ -51,6 +51,18 @@ class symfony2 {
   }
 
   # Install Symfony2 from composer
+  composer::project { 'symfony2':
+    project_name   => 'symfony/symfony-standard',  # REQUIRED
+    target_dir     => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
+    version        => '~2.4', # Some valid version string
+    prefer_source  => true,
+    stability      => 'stable', # Minimum stability setting
+    keep_vcs       => false, # Keep the VCS information
+    dev            => false, # Install dev dependencies
+    user           => 'www-data', # Set the user to run as
+  }
+
+  # Install vendors from composer.json
   composer::exec { 'symfony2':
     cmd                  => 'install',  # REQUIRED
     cwd                  => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
