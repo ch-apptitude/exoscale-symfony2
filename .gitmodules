@@ -1,0 +1,3 @@
+[submodule "modules/composer"]
+	path = modules/composer
+	url = git://github.com/tPl0ch/puppet-composer.git
