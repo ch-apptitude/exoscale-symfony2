@@ -36,15 +36,15 @@ class nginx {
 
 }
 
-class nginx::wordpress {
-  include wordpress
+class nginx::symfony2 {
+  include symfony2
   include nginx
   
-  $wordpress_dir = extlookup('wordpress-dir', '/opt')
-  $server_names = extlookup("wordpress-server-names", "wordpress")
+  $symfony2_dir = extlookup('symfony2-dir', '/opt')
+  $server_names = extlookup("symfony2-server-names", "symfony2")
 
-  file { '/etc/nginx/sites-enabled/wordpress.conf':
-    content => template("nginx/wordpress.conf.erb"),
+  file { '/etc/nginx/sites-enabled/symfony2.conf':
+    content => template("nginx/symfony2.conf.erb"),
     require => File['/etc/nginx/nginx.conf'],
     notify => Service['nginx']
   }
