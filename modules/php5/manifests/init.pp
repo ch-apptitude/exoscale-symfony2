@@ -8,6 +8,16 @@ class php5 {
       'php5-curl',
       'php5-gd',
       'php5-fpm',
+      'php5-intl',
+      'php5-mcrypt',
+      'php5-common',
+      'php5-process',
+      'php-xml',
+      'php-mbstring',
+      'php-process',
+      'php5-apcu',
+      'php5-cli',
+      'php-pear'
     ]:
     ensure => present,
   }
@@ -19,14 +29,14 @@ class php5 {
 
 }
 
-class php5::wordpress {
+class php5::symfony2 {
 
-  include wordpress
+  include symfony2
 
-  $wordpress_dir = "${wordpress_dir}/wordpress"
+  $wordpress_dir = "${symfony2_dir}/symfony2"
 
-  file { '/etc/php5/fpm/conf.d/wordpress.conf':
-    content => template('php5/wordpress.conf.erb'),
+  file { '/etc/php5/fpm/conf.d/symfony2.conf':
+    content => template('php5/symfony2.conf.erb'),
     require => Package['php5-fpm'],
     notify => Service['php5-fpm']
   }
