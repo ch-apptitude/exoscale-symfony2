@@ -104,7 +104,8 @@ class symfony2 {
   file { "${symfony2_dir}/symfony2/current/app/logs":
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/shared/app/logs",
-     force  => true
+     purge => true,
+     force  => true,
   }
 
   # Create the symfony2 database
