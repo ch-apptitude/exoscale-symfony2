@@ -3,5 +3,8 @@ symfony2-db-user,symfony
 symfony2-db-password,pleasechangemetoo
 symfony2-db-root-password,yupchangemetoo
 symfony2-db-host,localhost
+symfony2-db-driver,pdo_mysql
+symfony2-secret,Thisisnotaprivatesecret
+symfony2-locale, en
 symfony2-server-names,symfony2.example.com
 symfony2_dir,/opt
