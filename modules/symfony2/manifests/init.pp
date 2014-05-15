@@ -6,6 +6,8 @@ class symfony2 {
   $symfony2_db_password = extlookup('symfony2-db-password')
   $symfony2_db_rootpwd  = extlookup('symfony2-db-root-password')
   $symfony2_db_host     = extlookup('symfony2-db-host')
+  $symfony2_db_driver   = extlookup('symfony2-db-driver')
+  $symfony2_db_port     = extlookup('symfony2-db-port')
   $symfony2_locale      = extlookup('symfony2-locale')
   $symfony2_secret      = extlookup('symfony2-secret')
 
@@ -52,6 +54,7 @@ class symfony2 {
     stability      => 'dev', # Minimum stability setting
     keep_vcs       => false, # Keep the VCS information
     dev            => true, # Install dev dependencies
+    user           => 'www-data',
     before         => File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"]
   }
 
@@ -101,6 +104,7 @@ class symfony2 {
   file { "${symfony2_dir}/symfony2/current/app/logs":
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/shared/app/logs",
+     force  => true
   }
 
   # Create the symfony2 database

@@ -4,6 +4,11 @@ parameters:
     database_name: 		<%= @symfony2_db_name %>
     database_user: 		<%= @symfony2_db_user %>
     database_password: 	<%= @symfony2_db_password %>
+    database_port:		~
     locale:             <%= @symfony2_locale %>
     secret:             <%= @symfony2_secret %>
 
+	mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~

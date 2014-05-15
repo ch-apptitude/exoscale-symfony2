@@ -1,22 +1,25 @@
 server {
     listen 80;
-    server_name <%= server_names %>;
-    root <%= symfony2_dir %>/symfony2/current/web;
+    server_name 185.19.28.181;
+    root /opt/symfony2/current/web;
 
-    index app.php
-    real_ip_header X-Forwarded-For;
-
+     # strip app.php/ prefix if it is present
+    rewrite ^/app\.php/?(.*)$ /$1 permanent;
+ 
     location / {
-        # try to serve file directly, fallback to app.php
-        try_files $uri /app.php$is_args$args;
+        index app.php;
+        try_files $uri @rewriteapp;
     }
-
+ 
+    location @rewriteapp {
+        rewrite ^(.*)$ /app.php/$1 last;
+    }
+ 
+    # pass the PHP scripts to FastCGI server from upstream phpfcgi
     location ~ ^/(app|app_dev|config)\.php(/|$) {
-        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_pass localhost:9000;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS off;
     }
 
     location ~* ^.+\.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|rss|atom|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
