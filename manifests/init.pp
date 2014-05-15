@@ -6,6 +6,12 @@ exec { 'apt_update':
   path    => '/usr/bin'
 }
 
+exec { 'puppet_composer':
+  command => 'git clone git://github.com/tPl0ch/puppet-composer.git /etc/puppet/modules/composer',
+  path    => '/usr/bin'
+}
+
+
 include git
 include nginx
 include php5
