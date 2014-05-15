@@ -62,7 +62,7 @@ class symfony2 {
     interaction          => false, # No interactive questions
     optimize             => false, # Optimize autoloader
     dev                  => false, # Install dev dependencies
-    before               = File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"],
+    before               => File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"],
   }
 
   # Copy a working parameters.yml file for the symfony2 setup.
