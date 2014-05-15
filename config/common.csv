@@ -1,7 +1,7 @@
-wordpress-passwd,pleasechangeme
-wordpress-db-name,wordpress
-wordpress-db-user,wordpress
-wordpress-db-password,pleasechangemetoo
-wordpress-db-root-password,yupchangemetoo
-wordpress-server-names,wordpress.example.com
-wordpress_dir,/opt
+symfony2-db-name,symfony2
+symfony2-db-user,symfony
+symfony2-db-password,pleasechangemetoo
+symfony2-db-root-password,yupchangemetoo
+symfony2-db-host,localhost
+symfony2-server-names,symfony2.example.com
+symfony2_dir,/opt
