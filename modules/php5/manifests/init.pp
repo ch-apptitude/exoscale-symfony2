@@ -7,8 +7,17 @@ class php5 {
       'php5-mysql',
       'php5-curl',
       'php5-gd',
-      'php5-fpm'
-      
+      'php5-fpm',
+      'php5-intl',
+      'php5-mcrypt',
+      'php5-common',
+      'php5-process',
+      'php-xml',
+      'php-mbstring',
+      'php-process',
+      'php5-apcu',
+      'php5-cli',
+      'php-pear'
     ]:
     ensure => present,
   }

@@ -5,7 +5,6 @@ class symfony2 {
   $symfony2_db_user     = extlookup('symfony2-db-user')
   $symfony2_db_password = extlookup('symfony2-db-password')
   $symfony2_db_rootpwd  = extlookup('symfony2-db-root-password')
-  $symfony2_db_name     = extlookup('symfony2-db-host')
   $symfony2_db_host     = extlookup('symfony2-db-host')
   $symfony2_locale      = extlookup('symfony2-locale')
   $symfony2_secret      = extlookup('symfony2-secret')
