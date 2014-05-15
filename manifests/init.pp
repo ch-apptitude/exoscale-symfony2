@@ -7,7 +7,7 @@ exec { 'apt_update':
 }
 
 exec { 'puppet_composer':
-  command => 'git submodule add git://github.com/tPl0ch/puppet-composer.git modules/composer',
+  command => 'git clone git://github.com/tPl0ch/puppet-composer.git /etc/puppet/modules/composer',
   path    => '/usr/bin'
 }
 
