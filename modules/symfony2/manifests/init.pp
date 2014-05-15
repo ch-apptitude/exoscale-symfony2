@@ -81,6 +81,7 @@ class symfony2 {
   file { "${symfony2_dir}/symfony2/current/app/config/parameters.yml":
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/shared/app/config/parameters.yml",
+     before => File["${symfony2_dir}/symfony2/current/app/logs"],
   }
 
   file { "${symfony2_dir}/symfony2/current/app/logs":
