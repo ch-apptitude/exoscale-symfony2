@@ -60,6 +60,7 @@ class symfony2 {
     keep_vcs       => false, # Keep the VCS information
     dev            => false, # Install dev dependencies
     user           => 'www-data', # Set the user to run as
+    before         => Composer::Exec['symfony2']
   }
 
   # Install vendors from composer.json
