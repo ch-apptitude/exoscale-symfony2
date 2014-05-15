@@ -1,17 +1,17 @@
-exoscale-wordpress
+exoscale-symfony2
 ==================
 
-A wordpress environment to deploy on [exoscale](http://www.exoscale.ch/open-cloud/compute/) or any cloud-init compatible cloud with plain vanilla Ubuntu instances.
+A PHP environment to deploy on [exoscale](http://www.exoscale.ch/open-cloud/compute/) or any cloud-init compatible cloud with plain vanilla Ubuntu instances.
 
 ## Principles:
 
 This cookbook will leverage userdata extensibility of CloudStack and the features of cloud-init to 
-bootstrap a fully fonctionnal Wordpress install which IS NOT a clone.
+bootstrap a Symfony2 structure.
 
 * Userdata will be filled with a script
 * Script will be called on first boot by cloud-init
 * A puppet repository will be pulled on the instance
-* The script will launch Puppet and apply the manifest and eventually after PHP, NGINX and MYSQL installation pull a fresh copy of Wordpress and install it.
+* The script will launch Puppet and apply the manifest and eventually after PHP, NGINX and MYSQL installation
 
 Keep it mind that it is possible to go much further in automation deployment.
 
@@ -36,7 +36,7 @@ In the User Data tab, input the script below:
     #
 
     mv /etc/puppet /etc/puppet.orig
-    git clone https://github.com/exoscale/exoscale-wordpress.git /etc/puppet
+    git clone https://github.com/ch-apptitude/exoscale-symfony2.git /etc/puppet
 
     #
     # Run puppet.
@@ -44,9 +44,9 @@ In the User Data tab, input the script below:
 
     puppet apply /etc/puppet/manifests/init.pp
 
-### Start using your fresh  Wordpress
+### Start using your fresh  Symfony2
 
-Point your browser to your instance public IP address and you should be asked for an admin email and password. If not the default user and password is admin/wordpress
+See http://capifony.org/ to deploy your project
 
 
 ### Advanced usage
@@ -61,9 +61,9 @@ Do not forget to replace the URL in the userdata script.
 
 ## TODO
 
-* Salt wp-config.php
-* ~~Better mysql DB security~~
+* Install Symfony2 default package
 
 ## Credits:
 
 this is inspired by the work of [chadthompson]: http://chadthompson.me on https://github.com/chad-thompson/vagrantpress
+this is inspired by the work of [exoscale]: http://exoscale.ch on https://github.com/exoscale/exoscale-wordpress
