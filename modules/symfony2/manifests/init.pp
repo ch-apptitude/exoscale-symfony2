@@ -60,6 +60,7 @@ class symfony2 {
     keep_vcs       => false, # Keep the VCS information
     dev            => false, # Install dev dependencies
     user           => 'www-data', # Set the user to run as
+    before         => File['${symfony2_dir}/symfony2/shared/app/config/parameters.yml']
   }
 
 
