@@ -11,11 +11,8 @@ class php5 {
       'php5-intl',
       'php5-mcrypt',
       'php5-common',
-      'php5-process',
-      'php-xml',
-      'php-mbstring',
-      'php-process',
-      'php5-apcu',
+      'libapache2-mod-php5',
+      'php-apc',
       'php5-cli',
       'php-pear'
     ]:

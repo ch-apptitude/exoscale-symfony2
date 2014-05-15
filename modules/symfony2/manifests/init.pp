@@ -18,6 +18,12 @@ class symfony2 {
   file { "${symfony2_dir}/symfony2":
     ensure => "directory",
   }
+  file { "${symfony2_dir}/symfony2/shared":
+    ensure => "directory",
+  }
+  file { "${symfony2_dir}/symfony2/shared/app":
+    ensure => "directory",
+  }
   file { "${symfony2_dir}/symfony2/shared/app/config":
     ensure => "directory",
   }

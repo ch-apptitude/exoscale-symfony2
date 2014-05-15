@@ -8,7 +8,7 @@ class nginx {
 
   service { 'nginx':
     ensure  => running,
-    require => Package['nginx'],
+    require => Package['nginx']
   }
 
   file { '/etc/nginx/nginx.conf':
