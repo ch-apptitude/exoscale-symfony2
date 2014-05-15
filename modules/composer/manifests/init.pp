@@ -5,7 +5,6 @@ class composer {
 	    download_method => 'curl',     # or 'wget'
 	    logoutput       => false,
 	    tmp_path        => '/tmp',
-	    php_package     => 'php5-cli',
 	    curl_package    => 'curl',
 	    wget_package    => 'wget',
 	    composer_home   => '/root',
