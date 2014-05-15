@@ -10,6 +10,6 @@ include git
 include nginx
 include php5
 include mysql
-include wordpress
-include nginx::wordpress
-include php5::wordpress
+include symfony2
+include nginx::symfony2
+include php5::symfony2
