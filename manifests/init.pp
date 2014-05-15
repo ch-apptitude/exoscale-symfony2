@@ -16,6 +16,7 @@ include git
 include nginx
 include php5
 include mysql
+include composer
 include symfony2
 include nginx::symfony2
 include php5::symfony2
