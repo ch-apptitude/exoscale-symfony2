@@ -1,5 +1,3 @@
-# Install latest symfony2
-
 class symfony2 {
 
   $symfony2_dir         = extlookup('symfony2-dir', '/opt')
