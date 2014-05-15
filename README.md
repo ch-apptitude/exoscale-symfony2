@@ -28,8 +28,12 @@ In the User Data tab, input the script below:
     #!/bin/sh
     set -e -x
 
+    #apt-get --yes --quiet update
+    #apt-get --yes --quiet install git puppet-common
+    wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
+    dpkg -i puppetlabs-release-precise.deb
     apt-get --yes --quiet update
-    apt-get --yes --quiet install git puppet-common
+    apt-get --yes --quiet install puppet git
 
     #
     # Fetch puppet configuration from public git repository.
