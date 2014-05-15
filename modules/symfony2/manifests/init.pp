@@ -24,9 +24,9 @@ class symfony2 {
   file { "${symfony2_dir}/symfony2/releases":
     ensure => "directory",
   }
-  file { "${symfony2_dir}/symfony2/releases/1":
-    ensure => "directory",
-  }
+  #file { "${symfony2_dir}/symfony2/releases/1":
+  #  ensure => "directory",
+  #}
   file { "${symfony2_dir}/symfony2/shared/vendor":
     ensure => "directory",
   }
@@ -43,17 +43,10 @@ class symfony2 {
     ensure => "directory",
   }
 
-  # Copy composer.json file for the symfony2 setup.
-  file { "${symfony2_dir}/symfony2/releases/1/composer.json":
-    ensure => file,
-    owner   => www-data,
-    content => template('symfony2/composer.json.erb'),
-  }
-
-  # Install Symfony2 from composer
+  # Create new symfony project Symfony2 from Composer
   composer::project { 'symfony2':
     project_name   => 'symfony/framework-standard-edition',  # REQUIRED
-    target_dir     => "${symfony2_dir}/symfony2/releases/2", # REQUIRED
+    target_dir     => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
     version        => '2.4.4', # Some valid version string
     prefer_source  => true,
     stability      => 'dev', # Minimum stability setting
@@ -61,6 +54,29 @@ class symfony2 {
     dev            => true, # Install dev dependencies
     before         => File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"]
   }
+
+  # Copy composer.json file for the symfony2 setup.
+  #file { "${symfony2_dir}/symfony2/releases/1/composer.json":
+  #  ensure => file,
+  #  owner   => www-data,
+  #  content => template('symfony2/composer.json.erb'),
+  #}
+
+  # Install vendors from composer.json
+  #composer::exec { 'symfony2':
+  #  cmd                  => 'install',  # REQUIRED
+  #  cwd                  => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
+  #  prefer_source        => false,
+  #  prefer_dist          => false,
+  #  dry_run              => false, # Just simulate actions
+  #  custom_installers    => false, # No custom installers
+  #  scripts              => false, # No script execution
+  #  interaction          => false, # No interactive questions
+  #  optimize             => false, # Optimize autoloader
+  #  dev                  => false, # Install dev dependencies
+  #  before               => File["${symfony2_dir}/symfony2/shared/app/config/parameters.yml"],
+  #  require              => File["${symfony2_dir}/symfony2/releases/1/composer.json"],
+  #}
 
 
   # Copy a working parameters.yml file for the symfony2 setup.
