@@ -21,12 +21,32 @@ class symfony2 {
   file { "${symfony2_dir}/symfony2/shared":
     ensure => "directory",
   }
+  file { "${symfony2_dir}/symfony2/releases":
+    ensure => "directory",
+  }
+  file { "${symfony2_dir}/symfony2/releases/1":
+    ensure => "directory",
+  }
+  file { "${symfony2_dir}/symfony2/shared/vendor":
+    ensure => "directory",
+  }
+  file { "${symfony2_dir}/symfony2/shared/web":
+    ensure => "directory",
+  }
   file { "${symfony2_dir}/symfony2/shared/app":
     ensure => "directory",
   }
   file { "${symfony2_dir}/symfony2/shared/app/config":
     ensure => "directory",
   }
+  file { "${symfony2_dir}/symfony2/shared/app/logs":
+    ensure => "directory",
+  }
+
+  # Install Symfony2 from composer
+
+  # Create symlinks
+
 
   # Copy a working parameters.yml file for the symfony2 setup.
   file { "${symfony2_dir}/symfony2/shared/app/config/parameters.yml":
