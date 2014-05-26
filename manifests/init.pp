@@ -6,7 +6,7 @@ exec { 'apt_update':
   path    => '/usr/bin'
 }
 exec { apache_stop :
-        command => '/sbin/service apache2 stop' ,
+        command => '/usr/sbin/service apache2 stop' ,
         refreshonly => false , # required for when entering at exe_ln
         onlyif => "/usr/sbin/service apache2 status"
         }
