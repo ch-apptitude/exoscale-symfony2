@@ -33,7 +33,7 @@ class symfony2 {
   #  ensure => "directory",
   #}
   file { "${symfony2_dir}/symfony2/shared/vendor":
-    ensure => "directory"
+    ensure => "directory",
     owner  => "www-data",
   }
   file { "${symfony2_dir}/symfony2/shared/web":
