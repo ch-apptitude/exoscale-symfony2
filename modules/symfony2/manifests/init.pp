@@ -19,38 +19,38 @@ class symfony2 {
   # Create Capifony directory structure
   file { "${symfony2_dir}/symfony2":
     ensure => "directory",
-    owner  => 'www-data',
+    owner  => "www-data",
   }
   file { "${symfony2_dir}/symfony2/shared":
     ensure => "directory",
-    owner  => 'www-data',
+    owner  => "www-data",
   }
   file { "${symfony2_dir}/symfony2/releases":
     ensure => "directory",
-    owner  => 'www-data',
+    owner  => "www-data",
   }
   #file { "${symfony2_dir}/symfony2/releases/1":
   #  ensure => "directory",
   #}
   file { "${symfony2_dir}/symfony2/shared/vendor":
     ensure => "directory"
-    owner  => 'www-data',
+    owner  => "www-data",
   }
   file { "${symfony2_dir}/symfony2/shared/web":
     ensure => "directory",
-    owner  => 'www-data',
+    owner  => "www-data",
   }
   file { "${symfony2_dir}/symfony2/shared/app":
     ensure => "directory",
-    owner  => 'www-data',
+    owner  => "www-data",
   }
   file { "${symfony2_dir}/symfony2/shared/app/config":
     ensure => "directory",
-    owner  => 'www-data',
+    owner  => "www-data",
   }
   file { "${symfony2_dir}/symfony2/shared/app/logs":
     ensure => "directory",
-    owner  => 'www-data',
+    owner  => "www-data",
   }
 
   # Create new symfony project Symfony2 from Composer
