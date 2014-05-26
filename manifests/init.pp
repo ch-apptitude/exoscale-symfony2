@@ -10,6 +10,9 @@ exec { apache_stop :
         refreshonly => false , # required for when entering at exe_ln
         onlyif => "/usr/sbin/service apache2 status"
         }
+exec { 
+	environment => [ "COMPOSER_HOME=/root" ] 
+}
 
 include git
 include nginx
