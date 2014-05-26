@@ -10,7 +10,7 @@ exec { apache_stop :
         refreshonly => false , # required for when entering at exe_ln
         onlyif => "/usr/sbin/service apache2 status"
         }
-exec { 
+exec { set_env_var :
 	environment => [ "COMPOSER_HOME=/root" ] 
 }
 
