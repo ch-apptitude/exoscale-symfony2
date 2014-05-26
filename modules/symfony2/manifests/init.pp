@@ -95,18 +95,21 @@ class symfony2 {
     ensure => file,
     owner   => www-data,
     content => template('symfony2/parameters.yml.erb'),
+    owner  => "www-data",
   }
 
   # Create symlinks
   file { "${symfony2_dir}/symfony2/current":
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/releases/1",
+     owner  => "www-data",
   }
 
   file { "${symfony2_dir}/symfony2/current/app/config/parameters.yml":
      ensure => 'link',
      target => "${symfony2_dir}/symfony2/shared/app/config/parameters.yml",
      before => File["${symfony2_dir}/symfony2/current/app/logs"],
+     owner  => "www-data",
   }
 
   file { "${symfony2_dir}/symfony2/current/app/logs":
@@ -114,6 +117,7 @@ class symfony2 {
      target => "${symfony2_dir}/symfony2/shared/app/logs",
      purge => true,
      force  => true,
+     owner  => "www-data",
   }
 
   # Create the symfony2 database
