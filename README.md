@@ -45,6 +45,8 @@ In the User Data tab, input the script below:
     #
 
     puppet apply /etc/puppet/manifests/init.pp
+    #Debug mode
+    # puppet apply /etc/puppet/manifests/init.pp --debug > /var/log/puppet/init-error.log
 
 ### Start using your fresh  Symfony2
 
