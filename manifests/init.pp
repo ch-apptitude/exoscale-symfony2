@@ -8,7 +8,7 @@ exec { 'apt_update':
 exec { apache_stop :
         command => '/sbin/service apache2 stop' ,
         refreshonly => false , # required for when entering at exe_ln
-        onlyif => "/sbin/service apache2 status"
+        onlyif => "/usr/sbin/service apache2 status"
         }
 
 include git
