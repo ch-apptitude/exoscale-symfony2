@@ -11,7 +11,7 @@ exec { apache_stop :
         onlyif => "/usr/sbin/service apache2 status"
         }
 exec { set_env_var :
-	command => 'echo set_env_path' ,
+	command => '/bin/echo set_env_path' ,
 	environment => [ "COMPOSER_HOME=/root" ] 
 }
 
