@@ -19,7 +19,7 @@ Keep it mind that it is possible to go much further in automation deployment.
 
 ### Start an instance
 
-Launch a new Ubuntu 12.04 LTS instance with the service offering you wish. Insert it in a security group or with firewall rules which enable port 80/http.
+Launch a new Ubuntu 14.04 LTS instance with the service offering you wish. Insert it in a security group or with firewall rules which enable port 80/http.
 
 ### User Data with Cloud-init
 
@@ -50,7 +50,8 @@ In the User Data tab, input the script below:
 
 ### Start using your fresh  Symfony2
 
-Now symfony-standard-edition 2.4.4 is installed and working. For deploy your project into webserver you can use capifony (http://capifony.org/)
+Now symfony-standard-edition 2.4.4 is installed and working. 
+For deploy your project on the server you can use capifony (http://capifony.org/)
 
 
 ### Advanced usage
@@ -65,8 +66,7 @@ Do not forget to replace the URL in the userdata script.
 
 ## Trooblshooting: 
 
-Wait few minutes after server ready on your exoscale console before begin to use your symfony 2 (Composer need time to download and install symfony).
-
+Wait few minutes after server ready on your exoscale console.
 
 ## Credits:
 
