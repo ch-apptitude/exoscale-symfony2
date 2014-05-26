@@ -50,7 +50,7 @@ In the User Data tab, input the script below:
 
 ### Start using your fresh  Symfony2
 
-See http://capifony.org/ to deploy your project
+Now symfony-standard-edition 2.4.4 is installed and working. For deploy your project into webserver you can use capifony (http://capifony.org/)
 
 
 ### Advanced usage
@@ -63,9 +63,10 @@ Of course also alter the git clone argument passed to your instance via user-dat
 To modify your configuration, clone this very repository and adjust files and manifests accordingly. 
 Do not forget to replace the URL in the userdata script.
 
-## TODO
+## Trooblshooting: 
 
-* Install Symfony2 default package
+Wait few minutes after server ready on your exoscale console before begin to use your symfony 2 (Composer need time to download and install symfony).
+
 
 ## Credits:
 
