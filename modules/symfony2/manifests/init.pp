@@ -57,7 +57,6 @@ class symfony2 {
   composer::project { 'symfony2':
     project_name   => 'symfony/framework-standard-edition',  # REQUIRED
     target_dir     => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
-    environment    => ["COMPOSER_HOME=/root"],
     version        => '2.4.4', # Some valid version string
     prefer_source  => true,
     stability      => 'dev', # Minimum stability setting
