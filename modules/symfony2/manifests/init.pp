@@ -95,7 +95,6 @@ class symfony2 {
     ensure => file,
     owner   => www-data,
     content => template('symfony2/parameters.yml.erb'),
-    owner  => "www-data",
   }
 
   # Create symlinks
