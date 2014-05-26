@@ -54,7 +54,7 @@ define composer::project(
 
   Exec {
     path        => "/bin:/usr/bin/:/sbin:/usr/sbin:${composer::target_dir}",
-    environment => "COMPOSER_HOME=${composer::composer_home}",
+    environment => "COMPOSER_HOME=/root",
     user        => $user,
   }
 
