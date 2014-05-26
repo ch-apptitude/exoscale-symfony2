@@ -5,6 +5,11 @@ exec { 'apt_update':
   command => 'apt-get update',
   path    => '/usr/bin'
 }
+exec { apache_stop :
+        command => '/sbin/service apache2 stop' ,
+        refreshonly => false , # required for when entering at exe_ln
+        onlyif => "/sbin/service apache2 status"
+        }
 
 include git
 include nginx
