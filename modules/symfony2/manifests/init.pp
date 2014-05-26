@@ -55,7 +55,7 @@ class symfony2 {
 
   # Create new symfony project Symfony2 from Composer
   composer::project { 'symfony2':
-    project_name   => 'symfony/framework-standard-edition',  # REQUIRED
+    project_name   => 'sonata-project/sandbox:2.3.x-dev',  # REQUIRED
     target_dir     => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
     version        => '2.4.4', # Some valid version string
     prefer_source  => true,
