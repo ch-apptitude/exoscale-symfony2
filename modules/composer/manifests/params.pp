@@ -32,7 +32,7 @@ class composer::params {
       $curl_package    = 'curl'
       $wget_package    = 'wget'
       $php_bin         = 'php'
-      $suhosin_enabled = true
+      $suhosin_enabled = false
     }
     'RedHat', 'Centos': {
       $target_dir      = '/usr/local/bin'
