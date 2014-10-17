@@ -57,7 +57,7 @@ class symfony2 {
   composer::project { 'symfony2':
     project_name   => 'symfony/framework-standard-edition',  # REQUIRED
     target_dir     => "${symfony2_dir}/symfony2/releases/1", # REQUIRED
-    version        => '2.4.4', # Some valid version string
+    version        => '~2.3', # Some valid version string
     prefer_source  => true,
     stability      => 'dev', # Minimum stability setting
     keep_vcs       => false, # Keep the VCS information
